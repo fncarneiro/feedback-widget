@@ -2,18 +2,10 @@ import { feedbackCreated } from '../utils/messages';
 import connection from '../database/connection';
 import formatResponse from '../utils/formatResponse';
 import { sendMail } from "../utils/sendMail";
-
-interface feedback {
-    id: string;
-    email: string;
-    comment: string;
-    type: string;
-    screenshot: string;
-    createAt: Date;
-}
+import { Feedback } from '@prisma/client';
 
 const feedback = {
-    async createFeedback(feedback: feedback, res: any) {
+    async createFeedback(feedback: Feedback, res: any) {
 
         try {
             const { comment, type, screenshot, email } = feedback;

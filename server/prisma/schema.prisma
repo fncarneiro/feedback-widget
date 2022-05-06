@@ -19,6 +19,5 @@ model Feedback {
   email      String
   createAt   DateTime @default(now())
 
-
   @@map("feedbacks")
 }

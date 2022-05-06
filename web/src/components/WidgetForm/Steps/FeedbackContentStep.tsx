@@ -13,6 +13,7 @@ interface FeedbackContentStep {
 export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, onFeedbackSent }: FeedbackContentStep) {
     const [screenshot, setScreenshot] = useState<string | null>(null);
     const [comment, setComment] = useState("");
+    const [email, setEmail] = useState("");
 
     const feedbackTypeInfo = feedbackTypes[feedbackType]
 
@@ -20,6 +21,7 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
         e.preventDefault();
         console.log({
             comment,
+            email,
             screenshot,
         })
         onFeedbackSent();
@@ -48,6 +50,12 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
                     className="min-w-[304px] w-full min-h-[112px] text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none resize-none scrollbar scrollbar-thumb-zinc-700 scrollbar-track-transparent scrollbar-thin"
                     placeholder="Describe your feedback"
                     onChange={(e) => setComment(e.target.value)}
+                />
+                <input
+                    type="email"
+                    className="flex w-full text-sm placeholder-zinc-400 text-zinc-100 border-zinc-600 bg-transparent rounded-md focus:border-brand-500 focus:ring-brand-500 focus:ring-1 focus:outline-none"
+                    placeholder="Contact e-mail"
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <footer className="flex gap-2 mt-2">

@@ -21,8 +21,9 @@ export default class StringHelper {
             return null;
         }
 
-        return `${this.leftPad(date.getDate(), 2)}/${this.leftPad(date.getMonth() + 1, 2)}/${date.getFullYear()} 
-            ${this.leftPad(date.getHours(), 2)}:${this.leftPad(date.getMinutes(), 2)}:${this.leftPad(date.getSeconds(), 2)}`;
+        return [`${this.leftPad(date.getDate(), 2)}/${this.leftPad(date.getMonth() + 1, 2)}/${date.getFullYear()}`,
+        `${this.leftPad(date.getHours(), 2)}:${this.leftPad(date.getMinutes(), 2)}:${this.leftPad(date.getSeconds(), 2)}`]
+            .join(' ');
     }
 
     static dateToJsonString(date: Date) {

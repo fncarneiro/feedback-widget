@@ -1,18 +1,10 @@
+import { Feedback } from '@prisma/client';
 import StringHelper from './stringHelper';
-
-interface feedback {
-    id: string;
-    email: string;
-    comment: string;
-    type: string;
-    screenshot?: string;
-    createAt: Date;
-}
 
 const formatResponse = {
 
-    feedback(feedback: feedback, request: any, msg: string) {
-        const formattedCreateAt = StringHelper.dateToJsonString(feedback.createAt)
+    feedback(feedback: Feedback, request: any, msg: string) {
+        const createAtFormatted = StringHelper.dateTimeToString(feedback.createAt)
         return {
             msg: msg,
             feedback: {
@@ -21,7 +13,7 @@ const formatResponse = {
                 comment: feedback.comment,
                 email: feedback.email,
                 screenshot: feedback.screenshot || '',
-                createAt: formattedCreateAt,
+                createAt: createAtFormatted,
                 request: {
                     type: request.type,
                     description: request.description,
@@ -30,7 +22,6 @@ const formatResponse = {
             }
         }
     },
-
 };
 
 export default formatResponse;
