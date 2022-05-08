@@ -28,7 +28,7 @@ export async function sendMail(to: string, subject: string, feedback: Feedback) 
             `<p>Feedback Type: ${type}</p>`,
             `<p>Comment: ${comment}</p>`,
             `<p>Email: ${email}</p>`,
-            `<p>Screenshot: ${screenshot}</p>`,
+            `<p>Screenshot: <img src="${screenshot}" /></p>`,
             `</div>`,
         ].join('\n')
     });

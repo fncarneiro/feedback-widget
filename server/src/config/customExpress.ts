@@ -16,6 +16,11 @@ interface Error {
 dotenv.config({ path: './src/config/env/.env.development' });
 const host = process.env.HOST;
 
+var corsOptions = {
+    origin: `http://${host}:3001/`,
+    optionsSuccessStatus: 200
+}
+
 const app = express();
 
 app.use(helmet());
@@ -29,7 +34,7 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', host);
     res.header('Vary', 'Origin');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    app.use(cors());
+    app.use(cors(corsOptions));
 
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
