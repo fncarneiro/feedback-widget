@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "start": "SET NODE_ENV=production&& node dist/server.js",
+    "start": "SET NODE_ENV=production&& npx prisma migrate deploy&& node dist/server.js",
     "dev": "SET NODE_ENV=development&& ts-node-dev src/server.ts"
   },
   "keywords": [],

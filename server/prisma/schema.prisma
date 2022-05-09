@@ -6,16 +6,16 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Feedback {
 
-  id         String   @id @default(uuid())
+  id         Int      @id @default(autoincrement())
   type       String
   comment    String
-  screenshot String?
+  screenshot String?  @db.LongText
   email      String
   createAt   DateTime @default(now())
 
