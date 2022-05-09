@@ -25,11 +25,14 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestartRequested, 
 
         setIsSendingFeedback(true);
 
-        await api.post("/api/feedback", {
+        await api.post("/feedback", {
             type: feedbackType,
             screenshot: screenshot,
             comment: comment,
             email: email
+        }).catch(() => {
+            setIsSendingFeedback(false);
+            console.log("Error sending feedback");
         });
 
         setIsSendingFeedback(false);

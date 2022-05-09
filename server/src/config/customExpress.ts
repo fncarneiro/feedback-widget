@@ -7,17 +7,17 @@ import morgan from 'morgan';
 import routes from '../routes/index';
 import dotenv from 'dotenv';
 
-
 interface Error {
     status?: number;
     message?: string;
 }
 
 dotenv.config({ path: './src/config/env/.env.development' });
-const host = process.env.HOST;
+const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
+const CORS_URL = `http://${process.env.CORS_HOST}:${process.env.CORS_PORT}`;
 
 var corsOptions = {
-    origin: `http://${host}:3001/`,
+    origin: CORS_URL,
     optionsSuccessStatus: 200
 }
 
@@ -26,12 +26,12 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', host);
+    res.header('Access-Control-Allow-Origin', CORS_URL);
     res.header('Vary', 'Origin');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     app.use(cors(corsOptions));
@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
         return res.status(200).json({
-            URL: `http://${host}:${process.env.PORT}/api`,
+            URL: URL,
             Version: process.env.npm_package_version,
             Options: 'GET, PUT, POST, DELETE'
         });
