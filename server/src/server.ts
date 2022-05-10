@@ -1,19 +1,18 @@
 import dotenv from 'dotenv';
-import customExpress from './config/customExpress';
-
 const node_env = process.env.NODE_ENV?.trim();
-
 switch (node_env) {
   case 'production':
-    dotenv.config({ path: './config/env/.env.production' });
+    dotenv.config({ path: 'src/config/env/.env.production', debug: true });
     break;
   case 'test':
-    dotenv.config({ path: './config/env/.env.test' });
+    dotenv.config({ path: 'src/config/env/.env.test', debug: true });
     break;
-  default:
-    dotenv.config({ path: './config/env/.env.development' });
+  case 'development':
+    dotenv.config({ path: 'src/config/env/.env.development', debug: true });
     break;
 }
+
+import customExpress from './config/customExpress';
 
 console.log('Environment: ', node_env?.toUpperCase());
 

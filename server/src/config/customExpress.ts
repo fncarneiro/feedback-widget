@@ -5,14 +5,12 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import routes from '../routes/index';
-import dotenv from 'dotenv';
 
 interface Error {
     status?: number;
     message?: string;
 }
 
-dotenv.config({ path: './src/config/env/.env.development' });
 const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
 const CORS_URL = `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT || 3000}`;
 
