@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
+    "prisma": "prisma migrate dev",
     "start": "SET NODE_ENV=production&& npx prisma migrate deploy&& node dist/server.js",
     "dev": "SET NODE_ENV=development&& ts-node-dev src/server.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Fernando N Carneiro",
   "license": "MIT",
   "devDependencies": {
     "@swc/jest": "^0.2.20",

@@ -14,7 +14,7 @@ interface Error {
 
 dotenv.config({ path: './src/config/env/.env.development' });
 const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
-const CORS_URL = `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`;
+const CORS_URL = `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT || 3000}`;
 
 var corsOptions = {
     origin: CORS_URL,
