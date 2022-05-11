@@ -12,7 +12,7 @@ interface Error {
 }
 
 const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
-const CORS_URL = `http://${process.env.CLIENT_HOST}`;
+const CORS_URL = `http://${process.env.CLIENT_HOST}:${process.env.PORT}`;
 
 var corsOptions = {
     origin: CORS_URL,
@@ -32,8 +32,8 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', CORS_URL);
     res.header('Vary', 'Origin');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    //app.use(cors(corsOptions));
-    app.use(cors());
+    app.use(cors(corsOptions));
+    //app.use(cors());
 
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');

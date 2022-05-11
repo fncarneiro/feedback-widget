@@ -8,7 +8,7 @@
     "build": "tsc",
     "prisma_dev": "dotenv -e .env.development -- prisma migrate dev",
     "prisma_prod": "dotenv -e .env.production -- prisma migrate deploy",
-    "start": "SET NODE_ENV=production&& npx prisma migrate deploy&& node dist/server.js",
+    "start": "SET NODE_ENV=production&& node dist/server.js",
     "dev": "SET NODE_ENV=development&& ts-node-dev src/server.ts"
   },
   "keywords": [],
