@@ -1,9 +1,14 @@
 import { Feedback } from '@prisma/client';
 import StringHelper from './stringHelper';
 
-const formatResponse = {
+export interface IFormatRequest {
+    type: string;
+    description: string;
+    url?: string;
+}
 
-    feedback(feedback: Feedback, request: any, msg: string) {
+const formatResponse = {
+    feedback(feedback: Feedback, request: IFormatRequest, msg: string) {
         const createAtFormatted = StringHelper.dateTimeToString(feedback.createAt)
         return {
             msg: msg,

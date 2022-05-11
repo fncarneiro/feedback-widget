@@ -1,12 +1,12 @@
 import { feedbackCreated } from '../utils/messages';
 import connection from '../database/connection';
-import formatResponse from '../utils/formatResponse';
+import formatResponse, { IFormatRequest } from '../utils/formatResponse';
 import { sendMail } from "../utils/sendMail";
 import { Feedback } from '@prisma/client';
+import express from 'express';
 
 const feedback = {
-    async createFeedback(feedback: Feedback, res: any) {
-
+    async createFeedback(feedback: Feedback, res: express.Response) {
         try {
             const { comment, type, screenshot, email } = feedback;
             const resultInsert = await connection.feedback.create({
@@ -19,7 +19,7 @@ const feedback = {
             });
 
             const feedbackResponse = { ...resultInsert };
-            const request = { type: 'POST', description: 'Insert a feedback.' };
+            const request: IFormatRequest = { type: 'POST', description: 'Insert a feedback.' };
             const response = formatResponse.feedback(feedbackResponse, request, feedbackCreated);
 
             const mail = { to: 'fncarneiro@gmail.com', subject: 'New Feedback', feedback: feedbackResponse };

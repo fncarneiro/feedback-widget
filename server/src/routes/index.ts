@@ -1,7 +1,7 @@
 import express from 'express';
 import feedbackRoute from './feedbackRoute';
 
-interface Error {
+type Error = {
     status?: number;
     message?: string;
 }
@@ -12,7 +12,7 @@ router.use('/feedback', feedbackRoute);
 
 
 router.use((req, res, next) => {
-    const error = new Error('Route not found.') as Error;
+    const error: Error = new Error('Route not found.');
     error.status = 404;
     next(error);
 });
