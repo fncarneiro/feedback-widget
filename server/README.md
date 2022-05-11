@@ -271,7 +271,5 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2021 [Fernando N Carneiro](https://github.com/fncarneiro).<br />
-This project is [ISC](https://github.com/fncarneiro/feedback-widget/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/fncarneiro/feedback-widget/blob/master/LICENSE) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
