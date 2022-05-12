@@ -16,7 +16,7 @@ import customExpress from './config/customExpress';
 
 console.log('Environment: ', node_env?.toUpperCase());
 
-const port = process.env.PORT || 3333;
+const port = process.env.PORT;
 
 const app = customExpress
   .listen(port, () => { console.log(`\u001b[1;34mServer running on ${process.env.HOST} - port ${port} ... \u001b[0m`); })
