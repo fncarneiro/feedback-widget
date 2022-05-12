@@ -2,21 +2,21 @@ import dotenv from 'dotenv';
 const node_env = process.env.NODE_ENV?.trim();
 switch (node_env) {
   case 'production':
-    dotenv.config({ path: 'src/config/env/.env.production', debug: true });
+    dotenv.config({ path: '.env.production', debug: true });
     break;
   case 'test':
-    dotenv.config({ path: 'src/config/env/.env.test', debug: true });
+    dotenv.config({ path: '.env.test', debug: true });
     break;
   case 'development':
-    dotenv.config({ path: 'src/config/env/.env.development', debug: true });
+    dotenv.config({ path: '.env.development', debug: true });
     break;
 }
 
-import customExpress from './config/customExpress';
+import customExpress from './service/customExpress';
 
 console.log('Environment: ', node_env?.toUpperCase());
 
-const port = process.env.PORT;
+const port = process.env.PORT || 3333;
 
 const app = customExpress
   .listen(port, () => { console.log(`\u001b[1;34mServer running on ${process.env.HOST} - port ${port} ... \u001b[0m`); })
