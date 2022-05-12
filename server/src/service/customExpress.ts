@@ -12,7 +12,7 @@ interface Error {
 }
 
 const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
-const CORS_URL = `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`;
+const CORS_URL = `${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`;
 
 var corsOptions = {
     origin: CORS_URL,
@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
         return res.status(200).json({
             URL: URL,
             Version: process.env.npm_package_version,
-            Options: 'GET, PUT, POST, DELETE'
+            Options: 'GET, POST'
         });
     }
     next();
