@@ -12,7 +12,7 @@ interface Error {
 }
 
 const URL = `http://${process.env.HOST}:${process.env.PORT}/api`;
-const CORS_URL = `${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}`;
+const CORS_URL = `${process.env.CLIENT_HOST}`;
 
 var corsOptions = {
     origin: CORS_URL,
